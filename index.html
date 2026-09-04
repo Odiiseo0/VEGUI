@@ -3,97 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>HOS MMXIII | Catálogo</title>
+    <title>HOS MMXIII — Official Store</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Barra de navegación superior (Estilo App) -->
     <header>
+        <div class="menu-icon">☰</div>
         <div class="logo">HOS MMXIII</div>
-        <div class="cart-icon">🛒</div>
+        <div class="cart-bag">🛒</div>
     </header>
 
-    <!-- CONTENEDOR PRINCIPAL DE PRODUCTOS -->
-    <main class="main-container">
-        
-        <!-- PRODUCTO 1: HUSTLE BLACK (Se muestra por defecto) -->
-        <section id="producto-1" class="product-section active">
-            <div class="product-image-wrapper">
-                <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80" alt="Playera 1">
-                <!-- Flechas de navegación -->
-                <button class="nav-arrow prev" onclick="cambiarProducto('atras')">❮</button>
-                <button class="nav-arrow next" onclick="cambiarProducto('adelante')">❯</button>
+    <main class="catalog-container">
+
+        <section class="product-card active" id="item-1">
+            <div class="image-container">
+                <img src="" alt="Producto HOS 1" id="img-1">
+                <button class="arrow prev" onclick="moverSlide(-1)">‹</button>
+                <button class="arrow next" onclick="moverSlide(1)">›</button>
             </div>
-            <div class="product-details">
-                <h1>HUSTLE OVERSIZE - BLACK</h1>
-                <div class="price">$550 MXN</div>
-                <p>Algodón premium, corte urbano.</p>
+            <div class="details">
+                <h2 id="title-1">HUSTLE OVERSIZE TEE</h2>
+                <div class="price" id="price-1">$550.00 MXN</div>
+                <p id="desc-1">Algodón pesado 280g, lavado ácido, corte boxy fit.</p>
                 
-                <div class="selector-group">
-                    <label>Talla:</label>
-                    <select id="talla-1">
-                        <option value="S">Chica (S)</option>
-                        <option value="M">Mediana (M)</option>
-                        <option value="L">Grande (L)</option>
+                <div class="size-selector">
+                    <label>TALLA:</label>
+                    <select id="size-1">
+                        <option value="S">S (Chica)</option>
+                        <option value="M" selected>M (Mediana)</option>
+                        <option value="L">L (Grande)</option>
+                        <option value="XL">XL (Extra Grande)</option>
                     </select>
                 </div>
-                <a href="#" class="btn-whatsapp" onclick="enviarPedido(1)">PEDIR POR WHATSAPP</a>
+
+                <a href="#" class="btn-order" onclick="pedirWhatsApp(1)">PEDIR POR WHATSAPP</a>
             </div>
         </section>
 
-        <!-- PRODUCTO 2: GRAFFITI WHITE (Oculto inicialmente) -->
-        <section id="producto-2" class="product-section next">
-            <div class="product-image-wrapper">
-                <!-- Cambia esta URL por tu segunda foto -->
-                <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?q=80" alt="Playera 2">
-                <button class="nav-arrow prev" onclick="cambiarProducto('atras')">❮</button>
-                <button class="nav-arrow next" onclick="cambiarProducto('adelante')">❯</button>
+        <section class="product-card next" id="item-2">
+            <div class="image-container">
+                <img src="" alt="Producto HOS 2" id="img-2">
+                <button class="arrow prev" onclick="moverSlide(-1)">‹</button>
+                <button class="arrow next" onclick="moverSlide(1)">›</button>
             </div>
-            <div class="product-details">
-                <h1>GRAFFITI MTY - WHITE</h1>
-                <div class="price">$580 MXN</div>
-                <p>Edición limitada centro MTY.</p>
+            <div class="details">
+                <h2 id="title-2">SKIMASK GRAPHIC HOODIE</h2>
+                <div class="price" id="price-2">$890.00 MXN</div>
+                <p id="desc-2">Sudadera con capucha y pasamontañas integrado, serigrafía en pecho.</p>
                 
-                <div class="selector-group">
-                    <label>Talla:</label>
-                    <select id="talla-2">
+                <div class="size-selector">
+                    <label>TALLA:</label>
+                    <select id="size-2">
                         <option value="S">S</option>
-                        <option value="M">M</option>
+                        <option value="M" selected>M</option>
                         <option value="L">L</option>
                         <option value="XL">XL</option>
                     </select>
                 </div>
-                <a href="#" class="btn-whatsapp" onclick="enviarPedido(2)">PEDIR POR WHATSAPP</a>
+
+                <a href="#" class="btn-order" onclick="pedirWhatsApp(2)">PEDIR POR WHATSAPP</a>
             </div>
         </section>
 
-        <!-- PRODUCTO 3: OLD ENGLISH BLUE (Oculto inicialmente) -->
-        <section id="producto-3" class="product-section next">
-            <div class="product-image-wrapper">
-                <!-- Cambia esta URL por tu tercer foto -->
-                <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?q=80" alt="Playera 3">
-                <button class="nav-arrow prev" onclick="cambiarProducto('atras')">❮</button>
-                <button class="nav-arrow next" onclick="cambiarProducto('adelante')">❯</button>
+        <section class="product-card next" id="item-3">
+            <div class="image-container">
+                <img src="" alt="Producto HOS 3" id="img-3">
+                <button class="arrow prev" onclick="moverSlide(-1)">‹</button>
+                <button class="arrow next" onclick="moverSlide(1)">›</button>
             </div>
-            <div class="product-details">
-                <h1>OLD ENGLISH - BLUE</h1>
-                <div class="price">$600 MXN</div>
-                <p>Estilo gánster urbano.</p>
+            <div class="details">
+                <h2 id="title-3">MEXICO REWORK JERSEY</h2>
+                <div class="price" id="price-3">$750.00 MXN</div>
+                <p id="desc-3">Jersey conmemorativo edición especial de fútbol urbano.</p>
                 
-                <div class="selector-group">
-                    <label>Talla:</label>
-                    <select id="talla-3">
-                        <option value="M">M</option>
+                <div class="size-selector">
+                    <label>TALLA:</label>
+                    <select id="size-3">
+                        <option value="S">S</option>
+                        <option value="M" selected>M</option>
                         <option value="L">L</option>
                         <option value="XL">XL</option>
                     </select>
                 </div>
-                <a href="#" class="btn-whatsapp" onclick="enviarPedido(3)">PEDIR POR WHATSAPP</a>
+
+                <a href="#" class="btn-order" onclick="pedirWhatsApp(3)">PEDIR POR WHATSAPP</a>
+            </div>
+        </section>
+
+        <section class="product-card next" id="item-4">
+            <div class="image-container">
+                <img src="" alt="Producto HOS 4" id="img-4">
+                <button class="arrow prev" onclick="moverSlide(-1)">‹</button>
+                <button class="arrow next" onclick="moverSlide(1)">›</button>
+            </div>
+            <div class="details">
+                <h2 id="title-4">VINTAGE CAR OVERSIZE TEE</h2>
+                <div class="price" id="price-4">$580.00 MXN</div>
+                <p id="desc-4">Gráfico clásico de auto estilo underground en espalda.</p>
+                
+                <div class="size-selector">
+                    <label>TALLA:</label>
+                    <select id="size-4">
+                        <option value="S">S</option>
+                        <option value="M" selected>M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                    </select>
+                </div>
+
+                <a href="#" class="btn-order" onclick="pedirWhatsApp(4)">PEDIR POR WHATSAPP</a>
+            </div>
+        </section>
+
+        <section class="product-card next" id="item-5">
+            <div class="image-container">
+                <img src="" alt="Producto HOS 5" id="img-5">
+                <button class="arrow prev" onclick="moverSlide(-1)">‹</button>
+                <button class="arrow next" onclick="moverSlide(1)">›</button>
+            </div>
+            <div class="details">
+                <h2 id="title-5">HUSTLAS BALACLAVA SKIMASK</h2>
+                <div class="price" id="price-5">$350.00 MXN</div>
+                <p id="desc-5">Pasamontañas bordado de alta densidad color negro.</p>
+                
+                <div class="size-selector">
+                    <label>TALLA:</label>
+                    <select id="size-5">
+                        <option value="UNITALLA" selected>UNITALLA</option>
+                    </select>
+                </div>
+
+                <a href="#" class="btn-order" onclick="pedirWhatsApp(5)">PEDIR POR WHATSAPP</a>
             </div>
         </section>
 
     </main>
+
+    <div class="counter-indicator">
+        <span id="current-slide">1</span> / <span id="total-slides">5</span>
+    </div>
 
     <script src="script.js"></script>
 </body>
