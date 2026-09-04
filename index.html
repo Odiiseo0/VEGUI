@@ -2,33 +2,98 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HOS MMXIII | Hustlas Only Supply</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>HOS MMXIII | Catálogo</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="product-container">
-        <div class="product-image">
-            <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500" alt="Playera Oversize HOS">
-        </div>
+    <!-- Barra de navegación superior (Estilo App) -->
+    <header>
+        <div class="logo">HOS MMXIII</div>
+        <div class="cart-icon">🛒</div>
+    </header>
+
+    <!-- CONTENEDOR PRINCIPAL DE PRODUCTOS -->
+    <main class="main-container">
         
-        <div class="product-info">
-            <h1>PLAYERA OVERSIZE "HUSTLE" - BLACK</h1>
-            <div class="price">$550.00 MXN</div>
-            <p>100% Algodón pesado. Estilo urbano Monterrey.</p>
+        <!-- PRODUCTO 1: HUSTLE BLACK (Se muestra por defecto) -->
+        <section id="producto-1" class="product-section active">
+            <div class="product-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80" alt="Playera 1">
+                <!-- Flechas de navegación -->
+                <button class="nav-arrow prev" onclick="cambiarProducto('atras')">❮</button>
+                <button class="nav-arrow next" onclick="cambiarProducto('adelante')">❯</button>
+            </div>
+            <div class="product-details">
+                <h1>HUSTLE OVERSIZE - BLACK</h1>
+                <div class="price">$550 MXN</div>
+                <p>Algodón premium, corte urbano.</p>
+                
+                <div class="selector-group">
+                    <label>Talla:</label>
+                    <select id="talla-1">
+                        <option value="S">Chica (S)</option>
+                        <option value="M">Mediana (M)</option>
+                        <option value="L">Grande (L)</option>
+                    </select>
+                </div>
+                <a href="#" class="btn-whatsapp" onclick="enviarPedido(1)">PEDIR POR WHATSAPP</a>
+            </div>
+        </section>
 
-            <label for="talla">Selecciona tu talla:</label>
-            <select id="talla">
-                <option value="Chica">Chica (S)</option>
-                <option value="Mediana">Mediana (M)</option>
-                <option value="Grande">Grande (L)</option>
-                <option value="Extra Grande">Extra Grande (XL)</option>
-            </select>
+        <!-- PRODUCTO 2: GRAFFITI WHITE (Oculto inicialmente) -->
+        <section id="producto-2" class="product-section next">
+            <div class="product-image-wrapper">
+                <!-- Cambia esta URL por tu segunda foto -->
+                <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?q=80" alt="Playera 2">
+                <button class="nav-arrow prev" onclick="cambiarProducto('atras')">❮</button>
+                <button class="nav-arrow next" onclick="cambiarProducto('adelante')">❯</button>
+            </div>
+            <div class="product-details">
+                <h1>GRAFFITI MTY - WHITE</h1>
+                <div class="price">$580 MXN</div>
+                <p>Edición limitada centro MTY.</p>
+                
+                <div class="selector-group">
+                    <label>Talla:</label>
+                    <select id="talla-2">
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                    </select>
+                </div>
+                <a href="#" class="btn-whatsapp" onclick="enviarPedido(2)">PEDIR POR WHATSAPP</a>
+            </div>
+        </section>
 
-            <a href="#" class="btn-buy" id="whatsapp-btn" onclick="enviarPedido()">PEDIR POR WHATSAPP</a>
-        </div>
-    </div>
+        <!-- PRODUCTO 3: OLD ENGLISH BLUE (Oculto inicialmente) -->
+        <section id="producto-3" class="product-section next">
+            <div class="product-image-wrapper">
+                <!-- Cambia esta URL por tu tercer foto -->
+                <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?q=80" alt="Playera 3">
+                <button class="nav-arrow prev" onclick="cambiarProducto('atras')">❮</button>
+                <button class="nav-arrow next" onclick="cambiarProducto('adelante')">❯</button>
+            </div>
+            <div class="product-details">
+                <h1>OLD ENGLISH - BLUE</h1>
+                <div class="price">$600 MXN</div>
+                <p>Estilo gánster urbano.</p>
+                
+                <div class="selector-group">
+                    <label>Talla:</label>
+                    <select id="talla-3">
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                    </select>
+                </div>
+                <a href="#" class="btn-whatsapp" onclick="enviarPedido(3)">PEDIR POR WHATSAPP</a>
+            </div>
+        </section>
+
+    </main>
 
     <script src="script.js"></script>
 </body>
