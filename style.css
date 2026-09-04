@@ -1,0 +1,93 @@
+body {
+    background-color: #0b0b0b;
+    color: #ffffff;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+.product-container {
+    max-width: 800px;
+    margin: 40px auto;
+    background: #161616;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    display: flex;
+    gap: 30px;
+}
+
+.product-image img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.product-info h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.price {
+    font-size: 20px;
+    color: #00ff66;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+p {
+    color: #aaa;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+label {
+    display: block;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #aaa;
+}
+
+select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    background: #222;
+    color: #fff;
+    border: 1px solid #444;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.btn-buy {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 25px;
+    background-color: #25d366;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+    transition: background 0.3s ease;
+}
+
+.btn-buy:hover {
+    background-color: #1ebe5d;
+}
+
+/* Diseño adaptable para celulares */
+@media (max-width: 600px) {
+    .product-container {
+        flex-direction: column;
+        padding: 20px;
+    }
+    .product-image img {
+        max-width: 100%;
+    }
+}
