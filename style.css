@@ -1,58 +1,53 @@
-/* --- Reset básico --- */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    -webkit-tap-highlight-color: transparent; /* Quita destello azul en móvil */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 body {
-    background-color: #121212;
-    color: white;
+    background-color: #ffffff; /* Estilo tipo tienda de alta gama con fondo blanco o claro */
+    color: #111111;
     height: 100vh;
-    overflow: hidden; /* Evita scroll de página completa */
     display: flex;
     flex-direction: column;
-}
-
-/* --- Header estilo App --- */
-header {
-    height: 50px;
-    background: rgba(18, 18, 18, 0.95);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-    border-bottom: 1px solid #333;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 100;
-    backdrop-filter: blur(5px);
-}
-
-.logo {
-    font-weight: bold;
-    letter-spacing: 1px;
-    font-size: 15px;
-}
-
-.cart-icon {
-    font-size: 18px;
-}
-
-/* --- Contenedor de secciones --- */
-.main-container {
-    position: relative;
-    width: 100%;
-    height: calc(100vh - 50px); /* Resta la altura del header */
-    margin-top: 50px;
     overflow: hidden;
 }
 
-/* --- Estilo base de cada sección de producto --- */
-.product-section {
+/* Header */
+header {
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 25px;
+    border-bottom: 1px solid #eaeaea;
+    background: #ffffff;
+    z-index: 10;
+}
+
+.menu-icon, .cart-bag {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.logo {
+    font-weight: 900;
+    letter-spacing: 2px;
+    font-size: 16px;
+}
+
+/* Contenedor del catálogo */
+.catalog-container {
+    position: relative;
+    width: 100%;
+    flex: 1;
+    overflow: hidden;
+    background: #fafafa;
+}
+
+/* Tarjeta de producto individual con animación suave */
+.product-card {
     position: absolute;
     top: 0;
     left: 0;
@@ -60,193 +55,184 @@ header {
     height: 100%;
     display: flex;
     flex-direction: column;
-    
-    /* --- MAGIA DE LA ANIMACIÓN: Transición suave de 0.5s --- */
-    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-    
-    background: #121212;
-    overflow-y: auto; /* Permite scroll dentro del producto si la pantalla es chica */
+    background: #ffffff;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
 }
 
-/* Estado: Slide a la izquierda (oculto) */
-.product-section.prev {
+.product-card.prev {
     transform: translateX(-100%);
     opacity: 0;
     pointer-events: none;
 }
 
-/* Estado: Activo (visible en pantalla) */
-.product-section.active {
+.product-card.active {
     transform: translateX(0);
     opacity: 1;
 }
 
-/* Estado: Slide a la derecha (oculto) */
-.product-section.next {
+.product-card.next {
     transform: translateX(100%);
     opacity: 0;
     pointer-events: none;
 }
 
-/* --- Imagen del producto y flechas --- */
-.product-image-wrapper {
+/* Imagen de producto editorial grande */
+.image-container {
     position: relative;
     width: 100%;
-    height: 60%; /* Ocupa 60% de la altura de pantalla */
-    min-height: 300px;
+    height: 55vh;
+    background: #000;
 }
 
-.product-image-wrapper img {
+.image-container img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Mantiene proporción, recorta si sobra */
-    display: block;
+    object-fit: cover;
 }
 
-/* Flechas de navegación */
-.nav-arrow {
+/* Flechas deslizantes estilo web de diseñador */
+.arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
+    background: rgba(255, 255, 255, 0.8);
+    color: #000;
     border: none;
-    width: 40px;
-    height: 60px;
-    font-size: 24px;
+    width: 45px;
+    height: 45px;
+    font-size: 28px;
     cursor: pointer;
-    z-index: 10;
     display: flex;
-    justify-content: center;
     align-items: center;
-    backdrop-filter: blur(2px);
-    transition: background 0.3s;
+    justify-content: center;
+    transition: background 0.2s;
+    border-radius: 50%;
 }
 
-.nav-arrow:hover {
-    background: rgba(0, 0, 0, 0.8);
+.arrow:hover {
+    background: #ffffff;
 }
 
-.nav-arrow.prev { left: 0; border-radius: 0 5px 5px 0; }
-.nav-arrow.next { right: 0; border-radius: 5px 0 0 5px; }
+.arrow.prev { left: 15px; }
+.arrow.next { right: 15px; }
 
-/* --- Detalles del producto --- */
-.product-details {
-    padding: 20px;
-    flex: 1;
+/* Detalles del producto */
+.details {
+    padding: 20px 25px;
     display: flex;
     flex-direction: column;
+    flex: 1;
 }
 
-.product-details h1 {
-    font-size: 22px;
-    margin-bottom: 8px;
-    letter-spacing: 0.5px;
+.details h2 {
+    font-size: 18px;
     font-weight: 800;
+    letter-spacing: 0.5px;
+    margin-bottom: 5px;
 }
 
 .price {
-    font-size: 22px;
-    color: #00e676; /* Verde más brillante */
+    font-size: 16px;
+    font-weight: 700;
+    color: #111111;
     margin-bottom: 10px;
-    font-weight: bold;
 }
 
-.product-details p {
-    color: #b0b0b0;
-    font-size: 14px;
-    line-height: 1.5;
+.details p {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.4;
     margin-bottom: 15px;
 }
 
-/* --- Selector de talla --- */
-.selector-group {
-    margin-bottom: 15px;
+/* Selector de talla */
+.size-selector {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
+    margin-bottom: 20px;
 }
 
-.selector-group label {
+.size-selector label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #444;
+}
+
+.size-selector select {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    background: #fff;
     font-size: 14px;
-    color: #aaa;
-    font-weight: 600;
-}
-
-select {
-    padding: 10px 15px;
-    background: #1e1e1e;
-    color: white;
-    border: 1px solid #333;
-    border-radius: 5px;
-    font-size: 16px;
-    flex: 1; /* Ocupa el espacio restante */
-    cursor: pointer;
-    appearance: none; /* Quita flecha por defecto */
-    background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
-    background-repeat: no-repeat;
-    background-position: right 10px center;
-    background-size: 20px;
-}
-
-select:focus {
+    border-radius: 4px;
     outline: none;
-    border-color: #00e676;
+    cursor: pointer;
 }
 
-/* --- Botón WhatsApp (Llamativo) --- */
-.btn-whatsapp {
+/* Botón de compra WhatsApp minimalista y moderno */
+.btn-order {
     display: block;
     width: 100%;
-    background-color: #25d366;
-    color: white;
+    background-color: #000000;
+    color: #ffffff;
     text-align: center;
-    padding: 16px;
+    padding: 15px;
     text-decoration: none;
-    font-weight: bold;
-    border-radius: 5px;
-    font-size: 16px;
-    margin-top: auto; /* Empuja el botón hacia abajo si sobra espacio */
-    transition: background-color 0.3s ease, transform 0.1s ease;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    border-radius: 4px;
+    margin-top: auto;
+    transition: background 0.2s;
 }
 
-.btn-whatsapp:active {
-    transform: scale(0.98); /* Efecto de presionar */
-    background-color: #1ebe5d;
+.btn-order:hover {
+    background-color: #333333;
 }
 
-/* --- Ajustes para pantallas muy grandes (Tablets/Desktop) --- */
+/* Contador inferior (1/5) */
+.counter-indicator {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #888;
+    background: rgba(255,255,255,0.9);
+    padding: 4px 10px;
+    border-radius: 20px;
+    z-index: 20;
+}
+
+/* Responsive para pantallas de computadora */
 @media (min-width: 768px) {
     body {
+        background-color: #e6e6e6;
         justify-content: center;
+        align-items: center;
     }
     
+    header, .catalog-container {
+        max-width: 420px;
+    }
+
     header {
-        max-width: 500px;
-        left: 50%;
-        transform: translateX(-50%);
-        border-left: 1px solid #333;
-        border-right: 1px solid #333;
+        border: 1px solid #ddd;
+        border-bottom: none;
     }
 
-    .main-container {
-        max-width: 500px;
-        height: 80vh; /* No ocupa toda la pantalla en alto */
+    .catalog-container {
+        height: 75vh;
         max-height: 750px;
-        box-shadow: 0 0 30px rgba(0,0,0,0.8);
-        border-radius: 10px;
-        margin-top: 80px;
-        border: 1px solid #333;
-    }
-    
-    .product-section {
-        border-radius: 10px;
+        border: 1px solid #ddd;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        border-radius: 0 0 8px 8px;
     }
 
-    .product-image-wrapper {
-        height: 350px; /* Altura fija en escritorio */
+    .counter-indicator {
+        bottom: calc(12.5vh + 15px);
     }
 }
