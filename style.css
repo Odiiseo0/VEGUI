@@ -1,93 +1,252 @@
-body {
-    background-color: #0b0b0b;
-    color: #ffffff;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+/* --- Reset básico --- */
+* {
+    box-sizing: border-box;
     margin: 0;
-    padding: 20px;
+    padding: 0;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    -webkit-tap-highlight-color: transparent; /* Quita destello azul en móvil */
+}
+
+body {
+    background-color: #121212;
+    color: white;
+    height: 100vh;
+    overflow: hidden; /* Evita scroll de página completa */
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Header estilo App --- */
+header {
+    height: 50px;
+    background: rgba(18, 18, 18, 0.95);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    border-bottom: 1px solid #333;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    backdrop-filter: blur(5px);
+}
+
+.logo {
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 15px;
+}
+
+.cart-icon {
+    font-size: 18px;
+}
+
+/* --- Contenedor de secciones --- */
+.main-container {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 50px); /* Resta la altura del header */
+    margin-top: 50px;
+    overflow: hidden;
+}
+
+/* --- Estilo base de cada sección de producto --- */
+.product-section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    
+    /* --- MAGIA DE LA ANIMACIÓN: Transición suave de 0.5s --- */
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    
+    background: #121212;
+    overflow-y: auto; /* Permite scroll dentro del producto si la pantalla es chica */
+}
+
+/* Estado: Slide a la izquierda (oculto) */
+.product-section.prev {
+    transform: translateX(-100%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Estado: Activo (visible en pantalla) */
+.product-section.active {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* Estado: Slide a la derecha (oculto) */
+.product-section.next {
+    transform: translateX(100%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* --- Imagen del producto y flechas --- */
+.product-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 60%; /* Ocupa 60% de la altura de pantalla */
+    min-height: 300px;
+}
+
+.product-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Mantiene proporción, recorta si sobra */
+    display: block;
+}
+
+/* Flechas de navegación */
+.nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 60px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 10;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    backdrop-filter: blur(2px);
+    transition: background 0.3s;
 }
 
-.product-container {
-    max-width: 450px;
-    width: 100%;
-    background: #161616;
+.nav-arrow:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.nav-arrow.prev { left: 0; border-radius: 0 5px 5px 0; }
+.nav-arrow.next { right: 0; border-radius: 5px 0 0 5px; }
+
+/* --- Detalles del producto --- */
+.product-details {
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    flex: 1;
     display: flex;
-    flex-direction: column; /* Organiza todo en columna hacia abajo */
-    gap: 20px;
+    flex-direction: column;
 }
 
-.product-image {
-    width: 100%;
-    height: 350px; /* Fija una altura uniforme para la foto */
-    overflow: hidden;
-    border-radius: 4px;
-}
-
-.product-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ajusta la foto sin deformarla ni recortarla de más */
-}
-
-.product-info h1 {
+.product-details h1 {
     font-size: 22px;
-    margin: 0 0 10px 0;
-    letter-spacing: 1px;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+    font-weight: 800;
 }
 
 .price {
-    font-size: 20px;
-    color: #00ff66;
-    margin-bottom: 15px;
+    font-size: 22px;
+    color: #00e676; /* Verde más brillante */
+    margin-bottom: 10px;
     font-weight: bold;
 }
 
-p {
-    color: #aaa;
+.product-details p {
+    color: #b0b0b0;
     font-size: 14px;
-    line-height: 1.4;
+    line-height: 1.5;
     margin-bottom: 15px;
 }
 
-label {
-    display: block;
-    margin-bottom: 5px;
+/* --- Selector de talla --- */
+.selector-group {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.selector-group label {
     font-size: 14px;
     color: #aaa;
+    font-weight: 600;
 }
 
 select {
-    width: 100%;
-    padding: 12px;
-    background: #222;
-    color: #fff;
-    border: 1px solid #444;
-    border-radius: 4px;
+    padding: 10px 15px;
+    background: #1e1e1e;
+    color: white;
+    border: 1px solid #333;
+    border-radius: 5px;
     font-size: 16px;
-    margin-bottom: 15px;
+    flex: 1; /* Ocupa el espacio restante */
+    cursor: pointer;
+    appearance: none; /* Quita flecha por defecto */
+    background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 20px;
 }
 
-.btn-buy {
+select:focus {
+    outline: none;
+    border-color: #00e676;
+}
+
+/* --- Botón WhatsApp (Llamativo) --- */
+.btn-whatsapp {
     display: block;
     width: 100%;
-    box-sizing: border-box;
     background-color: #25d366;
     color: white;
     text-align: center;
-    padding: 14px;
+    padding: 16px;
     text-decoration: none;
     font-weight: bold;
-    border-radius: 4px;
-    letter-spacing: 0.5px;
-    transition: background 0.3s ease;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: auto; /* Empuja el botón hacia abajo si sobra espacio */
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
 }
 
-.btn-buy:hover {
+.btn-whatsapp:active {
+    transform: scale(0.98); /* Efecto de presionar */
     background-color: #1ebe5d;
+}
+
+/* --- Ajustes para pantallas muy grandes (Tablets/Desktop) --- */
+@media (min-width: 768px) {
+    body {
+        justify-content: center;
+    }
+    
+    header {
+        max-width: 500px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-left: 1px solid #333;
+        border-right: 1px solid #333;
+    }
+
+    .main-container {
+        max-width: 500px;
+        height: 80vh; /* No ocupa toda la pantalla en alto */
+        max-height: 750px;
+        box-shadow: 0 0 30px rgba(0,0,0,0.8);
+        border-radius: 10px;
+        margin-top: 80px;
+        border: 1px solid #333;
+    }
+    
+    .product-section {
+        border-radius: 10px;
+    }
+
+    .product-image-wrapper {
+        height: 350px; /* Altura fija en escritorio */
+    }
 }
