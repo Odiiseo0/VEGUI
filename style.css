@@ -4,48 +4,60 @@ body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
     margin: 0;
     padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
 .product-container {
-    max-width: 800px;
-    margin: 40px auto;
+    max-width: 450px;
+    width: 100%;
     background: #161616;
-    padding: 30px;
+    padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.5);
     display: flex;
-    gap: 30px;
+    flex-direction: column; /* Organiza todo en columna hacia abajo */
+    gap: 20px;
+}
+
+.product-image {
+    width: 100%;
+    height: 350px; /* Fija una altura uniforme para la foto */
+    overflow: hidden;
+    border-radius: 4px;
 }
 
 .product-image img {
     width: 100%;
-    max-width: 300px;
-    border-radius: 4px;
-    object-fit: cover;
+    height: 100%;
+    object-fit: cover; /* Ajusta la foto sin deformarla ni recortarla de más */
 }
 
 .product-info h1 {
-    font-size: 24px;
-    margin-bottom: 10px;
+    font-size: 22px;
+    margin: 0 0 10px 0;
     letter-spacing: 1px;
 }
 
 .price {
     font-size: 20px;
     color: #00ff66;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     font-weight: bold;
 }
 
 p {
     color: #aaa;
     font-size: 14px;
-    line-height: 1.5;
+    line-height: 1.4;
+    margin-bottom: 15px;
 }
 
 label {
     display: block;
-    margin-top: 20px;
+    margin-bottom: 5px;
     font-size: 14px;
     color: #aaa;
 }
@@ -53,19 +65,18 @@ label {
 select {
     width: 100%;
     padding: 12px;
-    margin-top: 5px;
     background: #222;
     color: #fff;
     border: 1px solid #444;
     border-radius: 4px;
     font-size: 16px;
+    margin-bottom: 15px;
 }
 
 .btn-buy {
     display: block;
     width: 100%;
     box-sizing: border-box;
-    margin-top: 25px;
     background-color: #25d366;
     color: white;
     text-align: center;
@@ -79,15 +90,4 @@ select {
 
 .btn-buy:hover {
     background-color: #1ebe5d;
-}
-
-/* Diseño adaptable para celulares */
-@media (max-width: 600px) {
-    .product-container {
-        flex-direction: column;
-        padding: 20px;
-    }
-    .product-image img {
-        max-width: 100%;
-    }
 }
